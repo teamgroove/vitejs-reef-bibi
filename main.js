@@ -2,26 +2,29 @@ import './style.css';
 
 import Reef from 'reefjs';
 import Navigo from 'navigo';
-const router = new Navigo("/", { hash: true });
+
+import header from './components/header.js';
+
+const router = new Navigo('/', { hash: true });
 const render = (content) =>
-  (document.querySelector("#content").innerHTML = content);
+  (document.querySelector('#content').innerHTML = content);
 
 router
-  .on("/about", (match) => {
+  .on('/about', (match) => {
     console.log(match);
-    render("About");
+    render('About');
   })
-  .on("/products", (match) => {
+  .on('/products', (match) => {
     console.log(match);
-    render("Products " + JSON.stringify(match.params));
+    render('Products ' + JSON.stringify(match.params));
   })
-  .on("/login", (match) => {
+  .on('/login', (match) => {
     console.log(match);
-    render("Login");
+    render('Login');
   })
   .on((match) => {
     console.log(match);
-    render("home");
+    render('home');
   })
   .resolve();
 
@@ -38,6 +41,9 @@ let app = new Reef('#app', {
 
     // Otherwise, show the articles
     return `
+    <div id="todos">
+    ${header.html()}
+  </div>
 		<ul>
 			${props.articles
         .map(function (article) {
