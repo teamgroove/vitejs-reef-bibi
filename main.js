@@ -6,6 +6,7 @@ import todos from './components/todos.js';
 import header from './components/header.js';
 import home from './components/home.js';
 import articles from './components/articles.js';
+import './style.css';
 let page = '';
 const router = new Navigo('/', { hash: true });
 //const render = (content) =>
