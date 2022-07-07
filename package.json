@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.10.2",
-    "reefjs": "^11.0.1",
     "navigo": "^8.11.1",
+    "reefjs": "^11.0.1"
   }
 }

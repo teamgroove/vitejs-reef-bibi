@@ -1,6 +1,29 @@
 import './style.css';
 
 import Reef from 'reefjs';
+import Navigo from 'navigo';
+const router = new Navigo("/", { hash: true });
+const render = (content) =>
+  (document.querySelector("#content").innerHTML = content);
+
+router
+  .on("/about", (match) => {
+    console.log(match);
+    render("About");
+  })
+  .on("/products", (match) => {
+    console.log(match);
+    render("Products " + JSON.stringify(match.params));
+  })
+  .on("/login", (match) => {
+    console.log(match);
+    render("Login");
+  })
+  .on((match) => {
+    console.log(match);
+    render("home");
+  })
+  .resolve();
 
 // Create an app
 let app = new Reef('#app', {
@@ -34,11 +57,12 @@ let app = new Reef('#app', {
 
 // Fetch API data
 // Then, update the app data
+/*
 fetch('https://jsonplaceholder.typicode.com/posts')
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     app.data.articles = data;
-  });
+  });*/
 app.render();
