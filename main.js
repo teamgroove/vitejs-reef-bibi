@@ -3,28 +3,32 @@ import './style.css';
 import Reef from 'reefjs';
 import Navigo from 'navigo';
 import todos from './components/todos.js';
-//import header from './components/header.js';
-
+import header from './components/header.js';
+import home from './components/home.js';
+import articles from './components/articles.js';
+let page = '';
 const router = new Navigo('/', { hash: true });
-const render = (content) =>
-  (document.querySelector('#content').innerHTML = content);
+//const render = (content) =>
+//  (document.querySelector('#content').innerHTML = content);
 
 router
-  .on('/about', (match) => {
+  .on('/todos', (match) => {
     console.log(match);
-    render('About');
+    page = todos;
+    //  render('About');
   })
   .on('/products', (match) => {
     console.log(match);
-    render('Products ' + JSON.stringify(match.params));
+    //  render('Products ' + JSON.stringify(match.params));
   })
   .on('/login', (match) => {
     console.log(match);
-    render('Login');
+    //    render('Login');
   })
   .on((match) => {
     console.log(match);
-    render('home');
+    page = home;
+    //  render('home');
   })
   .resolve();
 
@@ -41,34 +45,22 @@ let app = new Reef('#app', {
 
     // Otherwise, show the articles
     return `
-    <div id="todos">
-    ${todos.html()}
-  </div>
-		<ul>
-			${props.articles
-        .map(function (article) {
-          return `
-        <!-- This is an example component -->
 
+ 
+    ${header.html()}
+   
+    ${page.html()}
 
-        <li>
-					<strong><a href="#">${article.title}.</a></strong>
-					${article.body}
-				</li>`;
-        })
-        .join('')}
-		</ul>`;
+    ${articles.html()}
+
+	`;
   },
 });
-
-// Fetch API data
-// Then, update the app data
-/*
 fetch('https://jsonplaceholder.typicode.com/posts')
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     app.data.articles = data;
-  });*/
+  });
 app.render();

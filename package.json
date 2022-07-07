@@ -14,6 +14,7 @@
   "dependencies": {
     "alpinejs": "^3.10.2",
     "navigo": "^8.11.1",
-    "reefjs": "^11.0.1"
+    "reefjs": "^11.0.1",
+    "vitawind": "^2.2.4"
   }
 }
