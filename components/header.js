@@ -1,12 +1,10 @@
-
+import Reef from 'reefjs';
 let header = new Reef('#header', {
-  data: {
-   
-  },
+  data: {},
   template: function (props) {
     return `
-	<div>	header</div>`
-  }
+	<div>	header</div>`;
+  },
 });
 
 export default header;

@@ -2,8 +2,8 @@ import './style.css';
 
 import Reef from 'reefjs';
 import Navigo from 'navigo';
-
-import header from './components/header.js';
+import todos from './components/todos.js';
+//import header from './components/header.js';
 
 const router = new Navigo('/', { hash: true });
 const render = (content) =>
@@ -36,13 +36,13 @@ let app = new Reef('#app', {
   template: function (props) {
     // If there are no articles
     if (!props.articles.length) {
-      return `<p>There are no articles.</p>`;
+      //  return `<p>There are no articles.</p>`;
     }
 
     // Otherwise, show the articles
     return `
     <div id="todos">
-    ${header.html()}
+    ${todos.html()}
   </div>
 		<ul>
 			${props.articles
